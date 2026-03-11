@@ -1,0 +1,65 @@
+class Node{
+    public:
+    int data;
+    Node * next;
+    
+    Node(int d){
+        data=d;
+        next=nullptr;
+    }
+};
+class Queue{
+    Node * front, *rear;
+    
+    public:
+    Queue(){
+         
+         front=nullptr, rear=nullptr;
+    }
+    bool isempty(){
+        return front==nullptr;
+    }
+    
+    void push(int data){
+        Node * newnode=new Node(data);
+        if(isempty()){
+            //init the queue
+           
+           front=newnode;
+           rear=newnode;
+           return;
+        }
+       
+        else{
+            rear->next=newnode;
+            rear=newnode;
+            return;
+            
+        }
+       
+    }
+    void pop(){
+        if(isempty()){
+            cout<<"queue is underflow"<<endl;
+            return;
+        }
+        else if(front->next==rear){
+            Node * temp=front;
+            front=front->next;
+            rear=front;
+            delte temp;
+        }
+        else{
+            //pop from head
+            Node * temp=front;
+            front=front->next;
+            delete temp;
+            
+        }
+    }
+    int top(){
+        return isempty()?-1:front->data;
+    }
+    
+    
+}
