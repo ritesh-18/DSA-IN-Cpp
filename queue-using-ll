@@ -43,7 +43,7 @@ class Queue{
             cout<<"queue is underflow"<<endl;
             return;
         }
-        else if(front->next==rear){
+        else if(front==rear){
             Node * temp=front;
             front=front->next;
             rear=front;
