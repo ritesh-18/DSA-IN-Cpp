@@ -1,0 +1,96 @@
+TLE CODE :
+
+ int findnegative(queue<int>q){
+        
+        while(!q.empty()){
+            if(q.front()<0)return q.front();
+            q.pop();
+        }
+        return 0;
+        
+    }
+    vector<int> firstNegInt(vector<int>& arr, int k) {
+        // write code here
+        vector<int>ans;
+        queue<int>q;
+        for(int i=0; i<k; i++){
+            q.push(arr[i]);
+        }
+        for(int i=k; i<=arr.size(); i++){
+            ans.push_back(findnegative(q));
+            q.pop();
+            q.push(arr[i]);
+            
+        }
+        return ans;
+    }
+
+
+------------------------------------
+
+Optimised Code:
+
+
+class Solution {
+  public:
+    int findnegative(queue<int>q){
+        
+        while(!q.empty()){
+            if(q.front()<0)return q.front();
+            q.pop();
+        }
+        return 0;
+        
+    }
+    vector<int> firstNegInt(vector<int>& arr, int k) {
+        // write code here
+        vector<int>ans;
+        queue<int>q;
+        for(int i=0; i<k; i++){
+            if(arr[i]<0){
+            q.push(i);
+            }
+        }
+        for(int i=k; i<=arr.size(); i++){
+            ans.push_back(q.empty()? 0 : arr[q.front()]);
+            
+            if(!q.empty() ){
+                if(q.front() <=  (i-k) )
+                
+                q.pop();
+            }
+            // q.pop();
+            if(arr[i] < 0){
+                
+               q.push(i);
+               
+            }
+            
+        }
+        return ans;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
