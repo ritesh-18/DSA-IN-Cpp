@@ -1,0 +1,18 @@
+ int timeRequiredToBuy(vector<int>& tickets, int k) {
+           queue<int>q; int time=0;
+           for(int i=0; i<tickets.size(); i++){
+            q.push(i);
+           }
+           // now check the conditions
+           while(tickets[k]!=0){
+            time++;
+            tickets[q.front()]-=1;
+            if(tickets[q.front()]!=0){
+                q.push(q.front());
+            }
+            q.pop();
+          
+
+           }
+           return time;
+    }
