@@ -1,0 +1,25 @@
+
+
+string Solution::solve(string A) {
+
+    string ans;
+    vector<int> freq(26, 0);
+    queue<char> q;
+
+    for(char c : A){
+
+        freq[c - 'a']++;
+        q.push(c);
+
+        while(!q.empty() && freq[q.front() - 'a'] > 1){
+            q.pop();
+        }
+
+        if(q.empty())
+            ans += '#';
+        else
+            ans += q.front();
+    }
+
+    return ans;
+}
