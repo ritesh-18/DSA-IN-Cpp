@@ -1,0 +1,16 @@
+void val(Node* root , vector<int>&ans){
+        if(root==nullptr)return;
+        val(root->left , ans);
+        val(root->right , ans);
+        ans.push_back(root->data);
+        
+        
+
+    }
+    vector<int> postOrder(Node* root) {
+        // code here
+        vector<int>ans;
+        // code here
+        val(root , ans);
+        return ans;
+    }
