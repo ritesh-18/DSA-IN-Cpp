@@ -21,3 +21,18 @@
         return ans;
         
     }
+----------------------------------------------------------------
+  void size(Node* root , int &cnt){
+        if(root==nullptr)return;
+        cnt++;
+        size(root->left , cnt);
+        size(root->right , cnt);
+    }
+    int getSize(Node* node) {
+        
+        int cnt=0;
+        size(node , cnt);
+        return cnt;
+        
+        
+    }
