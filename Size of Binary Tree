@@ -36,3 +36,24 @@
         
         
     }
+
+
+
+-----------------------------------------------------
+
+
+int getSize(Node* root) {
+        
+       int cnt=0;
+        if(root==nullptr)return 0;
+        
+        cnt= 1+getSize(root->left ) + getSize(root->right);
+        return cnt;
+        
+        
+    }
+
+
+
+
+
