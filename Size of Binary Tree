@@ -1,0 +1,23 @@
+ int getSize(Node* node) {
+        // code here
+        queue<Node*>q;
+        int ans=1;
+        q.push(node);
+        while(!q.empty()){
+            Node * temp=q.front();
+            q.pop();
+            
+            if(temp->left!=nullptr){
+                ans++;
+                q.push(temp->left);
+            }
+            if(temp->right!=nullptr){
+                ans++;
+                q.push(temp->right);
+            }
+            
+            
+        }
+        return ans;
+        
+    }
