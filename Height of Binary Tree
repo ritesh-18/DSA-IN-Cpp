@@ -1,0 +1,6 @@
+int height(Node* root) {
+        // code here
+        if(root==nullptr)return 0;
+        if(!root->left && !root->right)return 0;
+        return 1+ max(height(root->left) , height(root->right));
+    }
