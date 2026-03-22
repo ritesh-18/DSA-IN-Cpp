@@ -1,0 +1,31 @@
+vector<int> largestValues(Node* root) {
+        // code here
+        
+        vector<int>ans;
+        queue<Node*>q;
+        q.push(root);
+        
+        while(!q.empty()){
+            int size=q.size();
+            int maxValue=0;
+            
+            for(int i=0; i<size; i++){
+                Node * temp=q.front();
+                maxValue=max(maxValue , temp->data);
+                q.pop();
+                if(temp->left){
+                    q.push(temp->left);
+                    
+                }if(temp->right){
+                    q.push(temp->right);
+                }
+            }
+            ans.push_back(maxValue);
+            
+            
+        }
+        return ans;
+        
+        
+        
+    }
