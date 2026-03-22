@@ -1,0 +1,41 @@
+ bool isCousins(Node* root, int x, int y) {
+    if(!root) return false;
+
+    queue<pair<Node*, Node*>> q; 
+    // {node, parent}
+    q.push({root, NULL});
+
+    Node *parentX = NULL, *parentY = NULL;
+    int level = 0, levelX = -1, levelY = -1;
+
+    while(!q.empty()) {
+        int size = q.size();
+        level++;
+
+        for(int i = 0; i < size; i++) {
+            auto it = q.front();
+            q.pop();
+
+            Node* node = it.first;
+            Node* parent = it.second;
+
+            if(node->data == x) {
+                parentX = parent;
+                levelX = level;
+            }
+
+            if(node->data == y) {
+                parentY = parent;
+                levelY = level;
+            }
+
+            if(node->left) q.push({node->left, node});
+            if(node->right) q.push({node->right, node});
+        }
+
+        // Early stop (optimization)
+        if(levelX != -1 && levelY != -1) break;
+    }
+
+    return (levelX == levelY) && (parentX != parentY);
+}
