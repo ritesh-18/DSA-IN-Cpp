@@ -22,3 +22,26 @@
     }
     return ans;
     }
+----------------------------------------------------
+
+
+
+void lview(Node * root , int level , vector<int>&ans){
+        if(!root)return;
+        if(ans.size()==level){
+            ans.push_back(root->data);
+            
+        }
+        level++;
+        lview(root->left  , level , ans);
+        lview(root->right , level , ans);
+        
+        
+    }
+    vector<int> leftView(Node *root) {
+        // code here
+        int level=0;
+        vector<int>ans;
+        lview(root , level, ans);
+        return ans;
+    }
