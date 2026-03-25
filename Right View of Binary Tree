@@ -1,0 +1,24 @@
+vector<int> rightView(Node *root) {
+        //  code here
+          vector<int>ans;
+        deque<Node*>q;
+        q.push_back(root);
+        // int size;
+        while(!q.empty()){
+             ans.push_back(q.back()->data);
+           int size=q.size();
+           
+            while(size--){
+                Node * temp=q.front();
+                q.pop_front();
+                if(temp->left){
+                    q.push_back(temp->left);
+                }
+                if(temp->right){
+                    q.push_back(temp->right);
+                }
+        }
+        
+    }
+    return ans;
+    }
