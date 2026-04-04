@@ -41,3 +41,39 @@ class Solution {
         
     }
 };
+
+
+
+
+
+
+-------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Tview(Node *root , int pos , int l , vector<int>&ans , vector<int>&level){
+        if(!root)return;
+        if(level[pos]>l){
+            level[pos]=l;
+            ans[pos]=root->data;
+        }
+        
+        Tview(root->left  , pos-1 , l+1 , ans ,level);
+        Tview(root->right , pos+1 , l+1 , ans , level);
+        
+        
+    }
